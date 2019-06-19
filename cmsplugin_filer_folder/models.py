@@ -5,12 +5,10 @@ from django.db import models
 from cms.models import CMSPlugin
 from django.utils.translation import ugettext_lazy as _
 from filer.fields.folder import FilerFolderField
-from filer.utils.compatibility import python_2_unicode_compatible
 from .conf import settings
 from cmsplugin_filer_utils import FilerPluginManager
 
 
-@python_2_unicode_compatible
 class FilerFolder(CMSPlugin):
     """
     Plugin for storing any type of Folder.
@@ -27,6 +25,7 @@ class FilerFolder(CMSPlugin):
         to=CMSPlugin,
         related_name='%(app_label)s_%(class)s',
         parent_link=True,
+        on_delete=models.CASCADE
     )
 
     objects = FilerPluginManager(select_related=('folder',))

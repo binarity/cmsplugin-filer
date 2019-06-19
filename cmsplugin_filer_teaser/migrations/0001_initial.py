@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='FilerTeaser',
             fields=[
-                ('cmsplugin_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='cms.CMSPlugin')),
+                ('cmsplugin_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='cms.CMSPlugin', on_delete=models.CASCADE)),
                 ('title', models.CharField(max_length=255, verbose_name='title', blank=True)),
                 ('image_url', models.URLField(default=None, null=True, verbose_name='alternative image url', blank=True)),
                 ('style', models.CharField(max_length=255, blank=True, default=settings.CMSPLUGIN_FILER_TEASER_DEFAULT_STYLE, choices=settings.CMSPLUGIN_FILER_TEASER_STYLE_CHOICES, verbose_name='Style')),

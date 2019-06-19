@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='FilerLinkPlugin',
             fields=[
-                ('cmsplugin_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='cms.CMSPlugin')),
+                ('cmsplugin_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='cms.CMSPlugin', on_delete=models.CASCADE)),
                 ('name', models.CharField(max_length=255, verbose_name='name')),
                 ('url', models.CharField(max_length=255, null=True, verbose_name='url', blank=True)),
                 ('mailto', models.EmailField(help_text='An email address has priority over both pages and urls', max_length=75, null=True, verbose_name='mailto', blank=True)),

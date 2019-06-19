@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='filerimage',
             name='thumbnail_option',
-            field=models.ForeignKey(blank=True, to='filer.ThumbnailOption', help_text='overrides width, height, crop and upscale with values from the selected thumbnail option', null=True, verbose_name='thumbnail option'),
+            field=models.ForeignKey(blank=True, to='filer.ThumbnailOption', help_text='overrides width, height, crop and upscale with values from the selected thumbnail option', null=True, verbose_name='thumbnail option', on_delete=models.CASCADE),
         ),
         migrations.DeleteModel(
             name='ThumbnailOption',

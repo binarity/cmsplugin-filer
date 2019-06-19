@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='FilerFile',
             fields=[
-                ('cmsplugin_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='cms.CMSPlugin')),
+                ('cmsplugin_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='cms.CMSPlugin', on_delete=models.CASCADE)),
                 ('title', models.CharField(max_length=255, null=True, verbose_name='title', blank=True)),
                 ('target_blank', models.BooleanField(default=False, verbose_name='Open link in new window')),
                 ('style', models.CharField(default=settings.CMSPLUGIN_FILER_FILE_DEFAULT_STYLE, choices=settings.CMSPLUGIN_FILER_FILE_STYLE_CHOICES, verbose_name='Style', blank=True, max_length=255)),

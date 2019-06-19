@@ -9,7 +9,6 @@ from cms.models import CMSPlugin
 from cms.models.fields import PageField
 
 from filer.fields.file import FilerFileField
-from filer.utils.compatibility import python_2_unicode_compatible
 
 from djangocms_attributes_field.fields import AttributesField
 
@@ -23,7 +22,6 @@ LINK_STYLES = getattr(settings, "FILER_LINK_STYLES", DEFULT_LINK_STYLES)
 EXCLUDED_KEYS = ['class', 'href', 'target', ]
 
 
-@python_2_unicode_compatible
 class FilerLinkPlugin(CMSPlugin):
     name = models.CharField(_('name'), max_length=255)
     url = models.CharField(_("url"), blank=True, null=True, max_length=2000)
@@ -47,6 +45,7 @@ class FilerLinkPlugin(CMSPlugin):
         to=CMSPlugin,
         related_name='%(app_label)s_%(class)s',
         parent_link=True,
+        on_delete=models.CASCADE
     )
 
     def __str__(self):
