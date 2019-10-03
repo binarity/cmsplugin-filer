@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
                 ('free_link', models.CharField(help_text='if present image will be clickable', max_length=255, null=True, verbose_name='link', blank=True)),
                 ('description', models.TextField(null=True, verbose_name='description', blank=True)),
                 ('target_blank', models.BooleanField(default=False, verbose_name='open link in new window')),
-                ('image', filer.fields.image.FilerImageField(verbose_name='image', blank=True, to='filer.Image', null=True)),
+                ('image', filer.fields.image.FilerImageField(verbose_name='image', blank=True, to='filer.Image', null=True, on_delete=models.SET_NULL)),
                 ('page_link', cms.models.fields.PageField(blank=True, to='cms.Page', help_text='if present image will be clickable', null=True, verbose_name='page link')),
             ],
             options={

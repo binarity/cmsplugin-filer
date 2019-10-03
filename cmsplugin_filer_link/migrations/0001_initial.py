@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
                 ('mailto', models.EmailField(help_text='An email address has priority over both pages and urls', max_length=75, null=True, verbose_name='mailto', blank=True)),
                 ('link_style', models.CharField(max_length=255, verbose_name='link style', default=LINK_STYLES[0][0], choices=LINK_STYLES)),
                 ('new_window', models.BooleanField(default=False, help_text='Do you want this link to open a new window?', verbose_name='new window?')),
-                ('file', filer.fields.file.FilerFileField(blank=True, to='filer.File', null=True)),
+                ('file', filer.fields.file.FilerFileField(blank=True, to='filer.File', null=True, on_delete=models.SET_NULL)),
                 ('page_link', cms.models.fields.PageField(blank=True, to='cms.Page', help_text='A link to a page has priority over urls.', null=True, verbose_name='page')),
             ],
             options={
