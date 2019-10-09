@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
+import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
@@ -14,6 +15,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='filervideo',
             name='cmsplugin_ptr',
-            field=models.OneToOneField(parent_link=True, related_name='cmsplugin_filer_video_filervideo', primary_key=True, serialize=False, to='cms.CMSPlugin'),
+            field=models.OneToOneField(parent_link=True, related_name='cmsplugin_filer_video_filervideo', primary_key=True, serialize=False, to='cms.CMSPlugin',
+                                       on_delete=django.db.models.deletion.CASCADE),
         ),
     ]

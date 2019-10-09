@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import django
 from django.db import models, migrations
 import filer.fields.image
 import filer.fields.file
@@ -18,7 +19,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='FilerVideo',
             fields=[
-                ('cmsplugin_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='cms.CMSPlugin')),
+                ('cmsplugin_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='cms.CMSPlugin', on_delete=django.db.models.deletion.CASCADE)),
                 ('movie_url', models.CharField(help_text='vimeo or youtube video url. Example: http://www.youtube.com/watch?v=YFa59lK-kpo', max_length=255, null=True, verbose_name='movie url', blank=True)),
                 ('width', models.PositiveSmallIntegerField(verbose_name='width', default=settings.VIDEO_WIDTH)),
                 ('height', models.PositiveSmallIntegerField(verbose_name='height', default=settings.VIDEO_HEIGHT)),
@@ -34,8 +35,8 @@ class Migration(migrations.Migration):
                 ('buttonoutcolor', models.CharField(default=settings.VIDEO_BUTTON_OUT_COLOR, max_length=6, verbose_name='button out color', help_text='Hexadecimal, eg ff00cc')),
                 ('buttonovercolor', models.CharField(default=settings.VIDEO_BUTTON_OVER_COLOR, max_length=6, verbose_name='button over color', help_text='Hexadecimal, eg ff00cc')),
                 ('buttonhighlightcolor', models.CharField(default=settings.VIDEO_BUTTON_HIGHLIGHT_COLOR, max_length=6, verbose_name='button highlight color', help_text='Hexadecimal, eg ff00cc')),
-                ('image', filer.fields.image.FilerImageField(null=True, to='filer.Image', help_text='preview image file', related_name='filer_video_image', blank=True, verbose_name='image')),
-                ('movie', filer.fields.file.FilerFileField(null=True, to='filer.File', help_text='use .flv file or h264 encoded video file', blank=True, verbose_name='movie file')),
+                ('image', filer.fields.image.FilerImageField(null=True, to='filer.Image', help_text='preview image file', related_name='filer_video_image', blank=True, verbose_name='image', on_delete=django.db.models.deletion.SET_NULL)),
+                ('movie', filer.fields.file.FilerFileField(null=True, to='filer.File', help_text='use .flv file or h264 encoded video file', blank=True, verbose_name='movie file', on_delete=django.db.models.deletion.SET_NULL)),
             ],
             options={
                 'abstract': False,
